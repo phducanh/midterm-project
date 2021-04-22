@@ -14,4 +14,12 @@ function newTodo() {
     var node = "<li> <input type= 'checkbox'> " + a + "</li>";
     list.innerHTML =  list.innerHTML + node;
     itemCountSpan.innerHTML = list.getElementsByTagName('li').length;
+    var allCheckBox = list.querySelectorAll('input[type = checkbox]');
+    uncheckedCountSpan.innerHTML = allCheckBox.length - list.querySelectorAll('input:checked').length;
+    allCheckBox.forEach(e=>{
+      e.onchange = ()=>{
+        uncheckedCountSpan.innerHTML = allCheckBox.length - list.querySelectorAll('input:checked').length;
+      }
+    })
+    document.getElementById('add-td').value = "";
 }
